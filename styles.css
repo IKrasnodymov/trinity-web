@@ -136,6 +136,8 @@ body {
     transition: all 0.3s;
     cursor: pointer;
     border: none;
+    font-size: 2rem; /* Увеличиваем размер шрифта в 2 раза */
+    z-index: 10;
 }
 
 .menu-button:hover {
@@ -252,4 +254,24 @@ body {
     .collage-grid {
         grid-template-columns: 1fr;
     }
+}
+
+.menu-container {
+    position: relative;
+    cursor: pointer;
+}
+
+.menu-container:hover .menu-button {
+    transform: scale(1.05);
+    background-color: #4CAF50;
+    color: white;
+}
+
+.menu-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
 }
