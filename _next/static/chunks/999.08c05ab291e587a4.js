@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[999],{999:function(e,l,u){u.r(l);var s=u(7437);u(2265),l.default=e=>{let{src:l}=e;return(0,s.jsx)("video",{autoPlay:!0,loop:!0,muted:!0,playsInline:!0,className:"absolute inset-0 w-full h-full object-cover rounded-tl-3xl rounded-br-3xl",children:(0,s.jsx)("source",{src:l,type:"video/mp4"})})}}}]);
