@@ -1,24 +1,27 @@
-/* Базовые стили */
-html, body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    overflow-x: hidden;
-    width: 100%;
-}
-
 :root {
     --max-width: 800px;
     --content-padding: 20px;
 }
 
-/* Контейнер */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: white;
+    background-color: black;
+    overflow-x: hidden;
+}
+
 .container {
     width: 100%;
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 0 var(--content-padding);
-    box-sizing: border-box;
 }
 
 /* Хедер */
@@ -28,33 +31,27 @@ html, body {
     left: 0;
     right: 0;
     z-index: 1000;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(10px);
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    padding: 5px 0;
 }
 
 .header-menu {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     list-style-type: none;
-    margin: 0;
-    padding: 0;
-    max-width: var(--max-width);
-    margin: 0 auto;
+    padding: 10px 0;
 }
 
 .nav-item {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    padding: 6px 10px;
+    padding: 5px 10px;
+    margin: 5px;
     border-radius: 15px;
     transition: background-color 0.3s ease;
-    font-size: 0.9em;
-    margin: 0 5px;
 }
 
 .nav-item:hover {
@@ -63,7 +60,6 @@ html, body {
 
 .logo {
     font-size: 1.2em;
-    margin: 0 15px;
 }
 
 /* Видео секция */
@@ -86,37 +82,75 @@ html, body {
 }
 
 .trinity-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-size: 5rem;
     font-weight: 900;
     color: transparent;
     -webkit-text-stroke: 2px white;
     text-stroke: 2px white;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
     text-align: center;
+    white-space: nowrap;
 }
 
 /* Меню и модальные окна */
+.menu-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* Соотношение сторон 16:9 */
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.rounded-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.rounded-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
 .menu-button {
     position: absolute;
-    top: 1rem;
-    left: 1rem;
-    padding: 0.5rem 1rem;
-    border-radius: 9999px;
+    top: 10px;
+    left: 10px;
+    padding: 8px 16px;
+    border-radius: 20px;
     background-color: white;
     color: black;
     font-weight: bold;
-    transition: all 0.3s;
-    cursor: pointer;
     border: none;
-    font-size: 1.5rem;
+    cursor: pointer;
     z-index: 10;
+    font-size: 1rem;
 }
 
-.menu-button:hover {
-    transform: scale(1.05);
-    background-color: #4CAF50;
-    color: white;
+.menu-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.menu-container:hover .menu-overlay {
+    opacity: 1;
 }
 
 .modal {
@@ -127,7 +161,6 @@ html, body {
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
     background-color: rgba(0,0,0,0.9);
 }
 
@@ -137,15 +170,12 @@ html, body {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90%;
-    height: 90%;
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 800px;
 }
 
 .modal-content img {
     width: 100%;
-    height: 100%;
-    object-fit: contain;
+    height: auto;
 }
 
 .close {
@@ -153,33 +183,22 @@ html, body {
     font-size: 40px;
     font-weight: bold;
     position: absolute;
-    right: 35px;
-    top: 15px;
+    right: 15px;
+    top: 5px;
     cursor: pointer;
-    z-index: 1002;
 }
 
 /* Коллаж */
 .collage-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1rem;
-}
-
-.collage-item {
-    overflow: hidden;
-    position: relative;
+    gap: 10px;
 }
 
 .collage-item img {
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.collage-item:hover img {
-    transform: scale(1.05);
 }
 
 /* Нижняя панель */
@@ -188,14 +207,12 @@ html, body {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(10px);
     padding: 10px;
     display: flex;
     justify-content: center;
     z-index: 1000;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
 }
 
 .booking-button {
@@ -207,36 +224,12 @@ html, body {
     font-weight: bold;
     border-radius: 25px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.booking-button:hover {
-    background-color: #45a049;
 }
 
 /* Медиа-запросы */
 @media (max-width: 768px) {
-    .header-menu {
-        flex-wrap: wrap;
-    }
-
-    .nav-item {
-        padding: 4px 8px;
-        font-size: 0.8em;
-        margin: 2px;
-    }
-
-    .logo {
-        order: -1;
-        width: 100%;
-        text-align: center;
-        margin-bottom: 5px;
-    }
-
     .trinity-title {
         font-size: 3rem;
-        -webkit-text-stroke: 1px white;
-        text-stroke: 1px white;
     }
 
     .video-section {
@@ -244,12 +237,16 @@ html, body {
     }
 
     .menu-button {
-        font-size: 1rem;
-        padding: 0.3rem 0.8rem;
+        font-size: 0.8rem;
+        padding: 6px 12px;
     }
 }
 
 @media (max-width: 480px) {
+    .trinity-title {
+        font-size: 2rem;
+    }
+
     .collage-grid {
         grid-template-columns: 1fr;
     }
