@@ -1,39 +1,63 @@
-/* Добавьте эти стили в начало файла styles.css */
+/* Базовые стили */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
 
+:root {
+    --max-width: 800px;
+    --content-padding: 20px;
+}
+
+/* Контейнер */
+.container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--content-padding);
+    padding-right: var(--content-padding);
+    box-sizing: border-box;
+}
+
+/* Хедер */
 .fixed-header {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
-    background-color: rgba(0, 0, 0, 0.6); /* Затемняем фон */
+    background-color: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(10px);
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    padding: 5px 10px; /* Уменьшаем отступы */
+    padding: 5px 10px;
     transition: background-color 0.3s ease;
 }
 
 .header-menu {
     display: flex;
-    justify-content: center; /* Изменено с space-between на center */
+    justify-content: center;
     align-items: center;
     list-style-type: none;
     margin: 0;
     padding: 0;
-    max-width: 1000px; /* Ограничиваем максимальную ширину */
-    margin: 0 auto; /* Центрируем меню */
+    max-width: var(--max-width);
+    margin: 0 auto;
 }
 
 .nav-item {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    padding: 6px 10px; /* Уменьшены отступы */
-    border-radius: 15px; /* Уменьшаем радиус скругления */
+    padding: 6px 10px;
+    border-radius: 15px;
     transition: background-color 0.3s ease;
-    font-size: 0.9em; /* Уменьшаем размер шрифта */
-    margin: 0 5px; /* Добавлен отступ между элементами */
+    font-size: 0.9em;
+    margin: 0 5px;
 }
 
 .nav-item:hover {
@@ -41,8 +65,60 @@
 }
 
 .logo {
-    font-size: 1.2em; /* Уменьшаем размер логотипа */
-    margin: 0 15px; /* Увеличен отступ для логотипа */
+    font-size: 1.2em;
+    margin: 0 15px;
+}
+
+/* Видео секция */
+.video-section {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.video-section video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+}
+
+.trinity-title {
+    font-size: 5rem;
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 2px white;
+    text-stroke: 2px white;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+/* Меню и модальные окна */
+.menu-button {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    transition: all 0.3s;
+    cursor: pointer;
+    border: none;
+    font-size: 2rem;
+    z-index: 10;
+}
+
+.menu-button:hover {
+    transform: scale(1.05);
+    background-color: #4CAF50;
+    color: white;
 }
 
 .modal {
@@ -64,8 +140,6 @@
     transform: translate(-50%, -50%);
     width: 90%;
     height: 90%;
-    max-width: none;
-    max-height: none;
 }
 
 .modal-content img {
@@ -85,213 +159,7 @@
     z-index: 1002;
 }
 
-/* Остальные стили остаются без изменений */
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-.min-h-screen {
-    min-height: 100vh;
-}
-
-.bg-black {
-    background-color: black;
-}
-
-.text-white {
-    color: white;
-}
-
-.relative {
-    position: relative;
-}
-
-.h-screen {
-    height: 100vh;
-}
-
-.absolute {
-    position: absolute;
-}
-
-.inset-0 {
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-}
-
-.w-full {
-    width: 100%;
-}
-
-.h-full {
-    height: 100%;
-}
-
-.object-cover {
-    object-fit: cover;
-}
-
-.rounded-tl-3xl {
-    border-top-left-radius: 1.5rem;
-}
-
-.rounded-br-3xl {
-    border-bottom-right-radius: 1.5rem;
-}
-
-.bg-opacity-50 {
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.flex {
-    display: flex;
-}
-
-.items-center {
-    align-items: center;
-}
-
-.justify-center {
-    justify-content: center;
-}
-
-.text-6xl {
-    font-size: 3.75rem;
-}
-
-.font-bold {
-    font-weight: bold;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-bottom: 60px;
-}
-
-.mx-auto {
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.px-4 {
-    padding-left: 1rem;
-    padding-right: 1rem;
-}
-
-.py-8 {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-}
-
-.space-y-8 > * + * {
-    margin-top: 2rem;
-}
-
-.mb-8 {
-    margin-bottom: 2rem;
-}
-
-.h-96 {
-    height: 24rem;
-}
-
-.rounded-image {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-.rounded-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.menu-button {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    padding: 0.5rem 1rem;
-    border-radius: 9999px;
-    background-color: white;
-    color: black;
-    font-weight: bold;
-    transition: all 0.3s;
-    cursor: pointer;
-    border: none;
-    font-size: 2rem; /* Увеличиваем размер шрифта в 2 раза */
-    z-index: 10;
-}
-
-.menu-button:hover {
-    transform: scale(1.05);
-    background-color: #4CAF50;
-    color: white;
-}
-
-.menu-content {
-    display: none;
-    position: absolute;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.8);
-    align-items: center;
-    justify-content: center;
-}
-
-.text-xl {
-    font-size: 1.25rem;
-}
-
-.text-center {
-    text-align: center;
-}
-
-.grid {
-    display: grid;
-}
-
-.grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.gap-4 {
-    gap: 1rem;
-}
-
-.h-40 {
-    height: 10rem;
-}
-
-.rounded-lg {
-    border-radius: 0.5rem;
-}
-
-.bg-gray-900 {
-    background-color: #1a202c;
-}
-
-.py-4 {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-}
-
-.mt-8 {
-    margin-top: 2rem;
-}
-
-@media (min-width: 768px) {
-    .md\:grid-cols-5 {
-        grid-template-columns: repeat(5, minmax(0, 1fr));
-    }
-}
-
+/* Коллаж */
 .collage-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -328,64 +196,7 @@ body {
     grid-row: span 2;
 }
 
-@media (max-width: 1024px) {
-    .collage-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .collage-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 480px) {
-    .collage-grid {
-        grid-template-columns: 1fr;
-    }
-}
-.menu-container {
-    position: relative;
-    cursor: pointer;
-}
-
-.menu-container:hover .menu-button {
-    transform: scale(1.05);
-    background-color: #4CAF50;
-    color: white;
-}
-
-.menu-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 5;
-}
-
-/* Добавляем медиа-запрос для мобильных устройств */
-@media (max-width: 768px) {
-    .header-menu {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .nav-item {
-        padding: 6px 10px;
-        font-size: 0.8em;
-        margin: 2px;
-    }
-
-    .logo {
-        order: -1;
-        width: 100%;
-        text-align: center;
-        margin-bottom: 5px;
-    }
-}
-
+/* Нижняя панель */
 .bottom-bar {
     position: fixed;
     bottom: 0;
@@ -417,42 +228,48 @@ body {
     background-color: #45a049;
 }
 
-:root {
-    --max-width: 800px;
-    --content-padding: 20px;
-}
-
-.container, .fixed-header, .bottom-bar {
-    width: 100%;
-    max-width: var(--max-width);
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: var(--content-padding);
-    padding-right: var(--content-padding);
-}
-
-.fixed-header, .bottom-bar {
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-/* Остальной код остается без изменений */
-
-.trinity-title {
-    font-family: Arial, sans-serif; /* Используем тот же шрифт, что и для body */
-    font-size: 5rem;
-    font-weight: 900;
-    color: transparent;
-    -webkit-text-stroke: 2px white;
-    text-stroke: 2px white;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+/* Медиа-запросы */
+@media (max-width: 1024px) {
+    .collage-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 @media (max-width: 768px) {
+    .header-menu {
+        flex-wrap: wrap;
+    }
+
+    .nav-item {
+        padding: 4px 8px;
+        font-size: 0.8em;
+        margin: 2px;
+    }
+
+    .logo {
+        order: -1;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .collage-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .trinity-title {
         font-size: 3rem;
         -webkit-text-stroke: 1px white;
         text-stroke: 1px white;
+    }
+
+    .video-section {
+        height: 50vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .collage-grid {
+        grid-template-columns: 1fr;
     }
 }
