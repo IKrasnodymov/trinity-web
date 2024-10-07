@@ -1,22 +1,43 @@
 document.addEventListener('DOMContentLoaded', () => {
     const menuButtons = document.querySelectorAll('.menu-button');
-    let activeMenu = null;
+    const modals = document.querySelectorAll('.modal');
+    const closeButtons = document.querySelectorAll('.close');
 
     menuButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const menu = button.dataset.menu;
-            const menuContent = document.getElementById(`${menu}-menu`);
-
-            if (activeMenu === menu) {
-                menuContent.style.display = 'none';
-                activeMenu = null;
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const menuType = button.dataset.menu;
+            const modal = document.getElementById(`${menuType}-modal`);
+            if (modal) {
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
             } else {
-                if (activeMenu) {
-                    document.getElementById(`${activeMenu}-menu`).style.display = 'none';
+                const menuOverlay = button.nextElementSibling;
+                if (menuOverlay && menuOverlay.tagName === 'A') {
+                    window.open(menuOverlay.href, '_blank');
                 }
-                menuContent.style.display = 'flex';
-                activeMenu = menu;
             }
         });
     });
+
+    closeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const modal = button.closest('.modal');
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    });
+
+    window.addEventListener('click', (event) => {
+        modals.forEach(modal => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    });
+
+    // Остальной код остается без изменений
 });

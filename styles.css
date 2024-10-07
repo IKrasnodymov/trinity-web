@@ -1,3 +1,92 @@
+/* Добавьте эти стили в начало файла styles.css */
+
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.6); /* Затемняем фон */
+    backdrop-filter: blur(10px);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 5px 10px; /* Уменьшаем отступы */
+    transition: background-color 0.3s ease;
+}
+
+.header-menu {
+    display: flex;
+    justify-content: center; /* Изменено с space-between на center */
+    align-items: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    max-width: 1000px; /* Ограничиваем максимальную ширину */
+    margin: 0 auto; /* Центрируем меню */
+}
+
+.nav-item {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 6px 10px; /* Уменьшены отступы */
+    border-radius: 15px; /* Уменьшаем радиус скругления */
+    transition: background-color 0.3s ease;
+    font-size: 0.9em; /* Уменьшаем размер шрифта */
+    margin: 0 5px; /* Добавлен отступ между элементами */
+}
+
+.nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.logo {
+    font-size: 1.2em; /* Уменьшаем размер логотипа */
+    margin: 0 15px; /* Увеличен отступ для логотипа */
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 90%;
+    max-width: none;
+    max-height: none;
+}
+
+.modal-content img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.close {
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    position: absolute;
+    right: 35px;
+    top: 15px;
+    cursor: pointer;
+    z-index: 1002;
+}
+
+/* Остальные стили остаются без изменений */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -82,6 +171,7 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
+    padding-bottom: 60px;
 }
 
 .mx-auto {
@@ -255,7 +345,6 @@ body {
         grid-template-columns: 1fr;
     }
 }
-
 .menu-container {
     position: relative;
     cursor: pointer;
@@ -274,4 +363,96 @@ body {
     right: 0;
     bottom: 0;
     z-index: 5;
+}
+
+/* Добавляем медиа-запрос для мобильных устройств */
+@media (max-width: 768px) {
+    .header-menu {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-item {
+        padding: 6px 10px;
+        font-size: 0.8em;
+        margin: 2px;
+    }
+
+    .logo {
+        order: -1;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+}
+
+.bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.booking-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.booking-button:hover {
+    background-color: #45a049;
+}
+
+:root {
+    --max-width: 800px;
+    --content-padding: 20px;
+}
+
+.container, .fixed-header, .bottom-bar {
+    width: 100%;
+    max-width: var(--max-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--content-padding);
+    padding-right: var(--content-padding);
+}
+
+.fixed-header, .bottom-bar {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Остальной код остается без изменений */
+
+.trinity-title {
+    font-family: Arial, sans-serif; /* Используем тот же шрифт, что и для body */
+    font-size: 5rem;
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 2px white;
+    text-stroke: 2px white;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+    .trinity-title {
+        font-size: 3rem;
+        -webkit-text-stroke: 1px white;
+        text-stroke: 1px white;
+    }
 }
